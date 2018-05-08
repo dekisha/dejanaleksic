@@ -1,0 +1,245 @@
+// ----------------------------------------------------------------------------
+// System Setup
+// ----------------------------------------------------------------------------
+// Requirements to compile this theme on your system
+//
+// copy this theme in your sites/all/themes/custom folder and rename it, and the
+// .info file according to the project name.
+//
+// Install the following stuff (only required the first time,
+// if your haven't used this theme before)
+//
+// -- Install node.js
+// -- npm install -g grunt-cli
+//
+// make sure you close and re-open your command-line after installation
+// otherwise it won't register the $path of the newly installed node modules
+//
+// go to the theme folder
+// -- run "npm install"
+//
+// and that should be it.
+//
+// during dev, run "gulp watch"
+// when done, run "gulp"
+//
+// all source files that needs to be worked on are in assets folder
+// 
+// if you need css or js plugin, try to find it in https://www.npmjs.com/
+// and include it through gulpfile.js
+//
+// if its not there add it in libraries folder
+//
+// following imports try to follow reversed triangle principle -> 
+// https://other.media/wp-content/uploads/2017/01/itcss_2.png
+
+
+// SETTINGS - colors, fonts, breakpoints...
+// @import "node_modules/inuitcss/settings/settings.core";
+// @import "settings.scss";
+$color-blue: #22a7f0;
+$color-green: #09b59b;
+
+
+// TOOLS - mixins
+// @import "node_modules/inuitcss/tools/tools.font-size";
+// @import "node_modules/inuitcss/tools/tools.clearfix";
+// @import "node_modules/inuitcss/tools/tools.hidden";
+// @import "node_modules/sass-mq/mq";
+// @import "node_modules/singularitygs/stylesheets/singularitygs.scss";
+// @import "tools";
+
+
+// GENERIC - resets, normalize, global style...
+// @import "node_modules/inuitcss/generic/generic.box-sizing";
+// @import "node_modules/inuitcss/generic/generic.normalize";
+// @import "node_modules/inuitcss/generic/generic.reset";
+// @import "node_modules/inuitcss/generic/generic.shared";
+@import "node_modules/node-normalize-scss/normalize";
+
+
+// ELEMENTS - default element style
+// @import "node_modules/inuitcss/elements/elements.page";
+// @import "node_modules/inuitcss/elements/elements.headings";
+// @import "node_modules/inuitcss/elements/elements.images";
+// @import "node_modules/inuitcss/elements/elements.tables";
+// @import "elements";
+html,
+body {
+  font-family: "Titillium Web", sans-serif;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+// OBJECTS - abstractions
+// @import "node_modules/inuitcss/objects/objects.wrapper";
+// @import "node_modules/inuitcss/objects/objects.layout";
+// @import "node_modules/inuitcss/objects/objects.media";
+// @import "node_modules/inuitcss/objects/objects.flag";
+// @import "node_modules/inuitcss/objects/objects.box";
+// @import "node_modules/inuitcss/objects/objects.block";
+// @import "node_modules/inuitcss/objects/objects.ratio";
+// @import "node_modules/inuitcss/objects/objects.crop";
+// @import "node_modules/inuitcss/objects/objects.table";
+// @import "node_modules/inuitcss/objects/objects.pack";
+// @import "objects";
+
+
+// COMPONENTS - particular component theming
+// @import "node_modules/slick-carousel/slick/slick.scss";
+// @import "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
+// @import "node_modules/threesixty-slider/src/styles/threesixty";
+// @import "node_modules/fullpage.js/dist/jquery.fullpage";
+// @import "layouts";
+.l-page {
+  align-items: center;
+  background-color: $color-blue;
+  color: white;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  // grid-template-columns: 1fr 1fr;
+  a {
+    color: white;
+  }
+}
+// @import "components";
+.c-btn {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 2px;
+  color: white;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 22px;
+  margin: 30px auto auto auto;
+  padding: 11px 24px;
+  position: relative;
+  text-decoration: none;
+  &:after {
+    background-image: svg("thin-right-arrow.svg", "[fill]: #fff");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    content: "";
+    display: inline-block;
+    margin-left: 4px;
+    size: 20px;
+    vertical-align: middle;
+  }
+  &:hover {
+    background-color: white;
+    color: $color-blue;
+  }
+}
+
+// .info__button--dark {
+//   &:hover {
+//     color: white;
+//     background-color: #1560FB;
+//     color: #1560FB;
+//     background-color: white;
+//   }
+//   color: white;
+//   background: #1560FB;
+//   border-color: white;
+// }
+
+.c-info {
+  margin: auto;
+  text-align: center;
+}
+
+.c-info__tag {
+  margin: 30px auto auto auto;
+  opacity: 0.6;
+}
+
+.c-info__headshot {
+  border-radius: 200px;
+  box-shadow: 0 5px 10px darken($color-blue, 10%);
+  display: block;
+  height: 170px;
+  margin: auto;
+  width: 170px;
+}
+
+.c-info__title {
+  font-weight: 700;
+}
+
+.c-pin {
+  bottom: 20px;
+  left: 20px;
+  position: absolute;
+  a {
+    &:before {
+      background-image: svg("flag.svg", "[fill]: #fff");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 20px;
+      content: "";
+      display: inline-block;
+      margin-right: 4px;
+      size: 20px;
+      vertical-align: middle;
+    }
+    span {
+      color: white;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  }
+}
+
+.c-social {
+  bottom: 20px;
+  display: flex;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+}
+
+.c-social__item {
+  display: block;
+  margin: 0 10px;
+  a {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    display: block;
+    font-size: 0;
+    size: 20px;
+    &.icon-facebook {
+      background-image: svg("social-facebook.svg", "[fill]: #fff");
+    }
+    &.icon-twitter {
+      background-image: svg("social-twitter.svg", "[fill]: #fff");
+    }
+    &.icon-github {
+      background-image: svg("social-github.svg", "[fill]: #fff");
+    }
+    &.icon-upwork {
+      background-image: svg("social-upwork.svg", "[fill]: #fff");
+    }
+    &.icon-mail {
+      background-image: svg("social-mail.svg", "[fill]: #fff");
+    }
+  }
+}
+
+
+// UTILITIES - do one thing, and one thing only classes
+// @import "node_modules/inuitcss/utilities/utilities.clearfix";
+// @import "node_modules/inuitcss/utilities/utilities.widths";
+// @import "node_modules/inuitcss/utilities/utilities.headings";
+// @import "node_modules/inuitcss/utilities/utilities.spacings";
+// @import "node_modules/inuitcss/utilities/utilities.responsive-spacings";
+// @import "node_modules/inuitcss/utilities/utilities.print";
+// @import "node_modules/inuitcss/utilities/utilities.hide";
+// @import "node_modules/inuit-displays/inuit-displays.scss";
+// @import "utilities";
