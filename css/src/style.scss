@@ -35,18 +35,35 @@
 
 
 // SETTINGS - colors, fonts, breakpoints...
-// @import "node_modules/inuitcss/settings/settings.core";
-// @import "settings.scss";
+// Colors
 $color-blue: #22a7f0;
 $color-green: #09b59b;
+
+// Breakpoints: Min-width
+$xs:    480px;
+$s:    	550px;
+$m:   	768px;
+$l:     992px;
+$xl:   1200px;
+$xxl:  1400px;
+$xxxl: 1600px;
+
+// Breakpoints: Max-width
+$upto-xs:  max-width ($xs  - 1px);
+$upto-s:   max-width ($s   - 1px);
+$upto-m:   max-width ($m   - 1px);
+$upto-l:   max-width ($l   - 1px);
+$upto-xl:  max-width ($xl  - 1px);
+$upto-xxl: max-width ($xxl - 1px);
+
+
 
 
 // TOOLS - mixins
 // @import "node_modules/inuitcss/tools/tools.font-size";
 // @import "node_modules/inuitcss/tools/tools.clearfix";
 // @import "node_modules/inuitcss/tools/tools.hidden";
-// @import "node_modules/sass-mq/mq";
-// @import "node_modules/singularitygs/stylesheets/singularitygs.scss";
+@import "node_modules/breakpoint-sass/stylesheets/_breakpoint";
 // @import "tools";
 
 
@@ -64,6 +81,10 @@ $color-green: #09b59b;
 // @import "node_modules/inuitcss/elements/elements.images";
 // @import "node_modules/inuitcss/elements/elements.tables";
 // @import "elements";
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   font-family: "Titillium Web", sans-serif;
@@ -96,12 +117,16 @@ a {
 // @import "node_modules/fullpage.js/dist/jquery.fullpage";
 // @import "layouts";
 .l-page {
-  align-items: center;
-  background-color: $color-blue;
+  // align-items: center;
+  background: linear-gradient(90deg, #22a7f0 0%, #09b59b 100%);
   color: white;
-  display: flex;
+  // display: flex;
+  min-height: 100%;
   min-height: 100vh;
   position: relative;
+  @include breakpoint($s) {
+    height: 100%;
+  }
   // grid-template-columns: 1fr 1fr;
   a {
     color: white;
@@ -121,19 +146,22 @@ a {
   position: relative;
   text-decoration: none;
   &:after {
-    background-image: svg("thin-right-arrow.svg", "[fill]: #fff");
+    background-image: svg("right-arrow.svg", "[fill]: #fff");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
     content: "";
     display: inline-block;
-    margin-left: 4px;
+    margin-left: 20px;
     size: 20px;
     vertical-align: middle;
   }
   &:hover {
     background-color: white;
     color: $color-blue;
+    &:after {
+      background-image: svg("right-arrow.svg", "[fill]: #{$color-blue}");
+    }
   }
 }
 
@@ -150,8 +178,14 @@ a {
 // }
 
 .c-info {
-  margin: auto;
+  padding: 20px 20px 80px;
   text-align: center;
+  margin: auto;
+  @include breakpoint($s) {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+  }
 }
 
 .c-info__tag {
@@ -170,12 +204,21 @@ a {
 
 .c-info__title {
   font-weight: 700;
+  font-size: 18px;
+  @include breakpoint($s) {
+    font-size: 23px;
+  }
+  @include breakpoint($m) {
+    font-size: 28px;
+  }
 }
 
 .c-pin {
   bottom: 20px;
   left: 20px;
   position: absolute;
+  @include breakpoint($m) {
+  }
   a {
     &:before {
       background-image: svg("flag.svg", "[fill]: #fff");
@@ -197,23 +240,27 @@ a {
 }
 
 .c-social {
-  bottom: 20px;
   display: flex;
   margin: 0;
+  bottom: 20px;
   position: absolute;
   right: 10px;
 }
 
 .c-social__item {
   display: block;
-  margin: 0 10px;
+  margin: 0 0.5em;
   a {
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 20px;
     display: block;
     font-size: 0;
-    size: 20px;
+    background-size: 15px;
+    size: 15px;
+    @include breakpoint($m) {
+      background-size: 20px;
+      size: 20px;
+    }
     &.icon-facebook {
       background-image: svg("social-facebook.svg", "[fill]: #fff");
     }
