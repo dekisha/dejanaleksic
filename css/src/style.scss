@@ -261,6 +261,9 @@ a {
       background-size: 20px;
       size: 20px;
     }
+    &.icon-skype {
+      background-image: svg("social-skype.svg", "[fill]: #fff");
+    }
     &.icon-facebook {
       background-image: svg("social-facebook.svg", "[fill]: #fff");
     }
@@ -273,8 +276,8 @@ a {
     &.icon-upwork {
       background-image: svg("social-upwork.svg", "[fill]: #fff");
     }
-    &.icon-mail {
-      background-image: svg("social-mail.svg", "[fill]: #fff");
+    &.icon-linkedin {
+      background-image: svg("social-linkedin.svg", "[fill]: #fff");
     }
   }
 }
