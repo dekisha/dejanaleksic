@@ -24,7 +24,8 @@
     "node-normalize-scss": "^8.0.0",
     "postcss-assets": "^3.0.3",
     "postcss-size": "^1.0.0",
-    "postcss-svg": "^1.0.5"
+    "postcss-svg": "^1.0.5",
+    "vue-spinkit": "^1.4.0"
   },
   "scripts": {
     "postinstall": "find node_modules/ -name \"*.info\" -type f -delete"

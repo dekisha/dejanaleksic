@@ -10,6 +10,7 @@
   <meta http-equiv="cleartype" content="on">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700" rel="stylesheet">
   <link rel="stylesheet" href="css/dist/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
     <div class="c-info">
       <img class="c-info__headshot" src="https://media.licdn.com/dms/image/C4D03AQGcFr6oIRE2LA/profile-displayphoto-shrink_200_200/0?e=1531353600&v=beta&t=usNLKMHgGb6H8DHdgKmyIbTG7fiXtw0skk2VCswDn84" />
       <div class="c-info__tag">HELLO THERE!</div>
-      <h1 class="c-info__title"><a href="http://dejanaleksic.com" title="Dejan Aleksic | Drupal Front-End developer from Novi Sad, Serbia">I'm Deki. Drupal Front-End Developer.</a></h1>
+      <h1 class="c-info__title"><a href="http://dejanaleksic.com" title="Dejan Aleksic | Drupal Front-End developer from Novi Sad, Serbia">I'm Deki, drupal front-end developer, site builder and pattern lab enthusiast.</a></h1>
       <a class="c-btn" href="mailto:dekisha007@gmail.com">Let's discuss some business, shall we?</a>
     </div>
     <ul class="c-social">
@@ -31,21 +32,37 @@
     <div class="c-pin">
       <a href="https://www.wikiwand.com/en/Novi_Sad"><span>Made in Novi Sad, Serbia</span></a>
     </div>
-    <!-- <div class="c-resume">
-    </div> -->
+    <!-- <div class="c-resume"></div> -->
+
   </div>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118976012-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
+    
     function gtag() {
       dataLayer.push(arguments);
     }
-
+    
     gtag('js', new Date());
     gtag('config', 'UA-118976012-1');
+
+    
+    new Vue({
+      el: '#app',
+      data: {
+        loaded: false
+      },
+      methods: {
+        loadingFn: function() {
+          setTimeout(() => {
+            this.loaded = true;
+          }, 3000)
+        }
+      }
+    });
+    
   </script>
 
 </body>
