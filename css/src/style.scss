@@ -64,6 +64,7 @@ $upto-xxl: max-width ($xxl - 1px);
 // @import "node_modules/inuitcss/tools/tools.clearfix";
 // @import "node_modules/inuitcss/tools/tools.hidden";
 @import "node_modules/breakpoint-sass/stylesheets/_breakpoint";
+@import "node_modules/flexbox-grid-mixins/sass/flexbox-grid-mixins";
 // @import "tools";
 
 
@@ -127,9 +128,9 @@ a {
   min-height: 100vh;
   position: relative;
 
-  @include breakpoint($m) {
-    height: 100%;
-  }
+  // @include breakpoint($m) {
+  //   height: 100%;
+  // }
   // grid-template-columns: 1fr 1fr;
   a {
     color: white;
@@ -141,13 +142,17 @@ a {
   border-style: solid;
   border-width: 2px;
   color: white;
-  display: inline-block;
+  display: block;
   font-weight: 700;
   line-height: 22px;
-  margin: 30px auto auto auto;
+  // margin: 30px auto auto auto;
   padding: 11px 60px 11px 24px;
   position: relative;
   text-decoration: none;
+
+  @include breakpoint($s) {
+    display: inline-block;
+  }
   &:after {
     background-image: svg("right-arrow.svg", "[fill]: #fff");
     background-position: center;
@@ -183,19 +188,24 @@ a {
 
 .c-info {
   margin: 0 auto;
-  max-width: 620px;
+  max-width: 800px;
   padding: 20px;
   text-align: center;
 
-  @include breakpoint($m) {
-    position: relative;
-    top: 20%;
-    // transform: translateY(-50%);
+  // @include breakpoint($m) {
+  // position: relative;
+  // top: 10%;
+  // transform: translateY(-50%);
+  // }
+   > * {
+    margin-bottom: 30px;
+    margin-top: 30px;
   }
 }
 
 .c-info__tag {
-  margin: 30px auto auto auto;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 0.6;
 }
 
@@ -216,6 +226,37 @@ a {
   }
   @include breakpoint($m) {
     font-size: 28px;
+  }
+}
+
+.c-info__subtitle {
+  font-size: 14px;
+  font-weight: 700;
+
+  @include breakpoint($s) {
+    font-size: 18px;
+  }
+  @include breakpoint($m) {
+    font-size: 22px;
+  }
+}
+
+.c-cta {
+  background-color: $color-green;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1em 2em;
+
+  @include breakpoint($s) {
+    align-items: center;
+    grid-gap: 30px;
+    // @include grid($align-items: center, $gutter: 20px, $justify-content: space-around);
+    grid-template-columns: 3fr 2fr;
+  }
+   > * {
+    @include breakpoint($s) {
+      // @include grid-col($col: 6, $gutter: 20px);
+    }
   }
 }
 
