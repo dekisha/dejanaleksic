@@ -127,6 +127,17 @@ a {
   // min-height: 100%;
   min-height: 100vh;
   position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url('../../pattern.png');
+    // background-size: cover;
+    // background-repeat: no-repeat;
+  }
 
   // @include breakpoint($m) {
   //   height: 100%;
@@ -149,6 +160,8 @@ a {
   padding: 11px 60px 11px 24px;
   position: relative;
   text-decoration: none;
+  width: 200px;
+  margin: auto;
 
   @include breakpoint($s) {
     display: inline-block;
@@ -190,6 +203,8 @@ a {
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+  position: relative;
+  z-index: 1;
   text-align: center;
 
   // @include breakpoint($m) {
@@ -222,36 +237,36 @@ a {
   font-weight: 700;
 
   @include breakpoint($s) {
-    font-size: 23px;
+    font-size: 24px;
   }
-  @include breakpoint($m) {
-    font-size: 28px;
-  }
+  // @include breakpoint($m) {
+  //   font-size: 28px;
+  // }
 }
 
 .c-info__subtitle {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 300;
 
   @include breakpoint($s) {
     font-size: 18px;
   }
-  @include breakpoint($m) {
-    font-size: 22px;
-  }
+  // @include breakpoint($m) {
+  //   font-size: 20px;
+  // }
 }
 
 .c-cta {
-  background-color: $color-green;
+  // background-color: $color-green;
   display: grid;
-  grid-template-columns: 1fr;
-  padding: 1em 2em;
+  // grid-template-columns: 1fr;
+  // padding: 1em 2em;
+  grid-gap: 30px;
 
   @include breakpoint($s) {
-    align-items: center;
-    grid-gap: 30px;
+    // align-items: center;
     // @include grid($align-items: center, $gutter: 20px, $justify-content: space-around);
-    grid-template-columns: 3fr 2fr;
+    // grid-template-columns: 3fr 2fr;
   }
    > * {
     @include breakpoint($s) {
@@ -267,7 +282,7 @@ a {
   text-align: center;
 
   @include breakpoint($m) {
-    bottom: 25px;
+    bottom: 23px;
     font-size: 18px;
     left: 20px;
     margin: 0;
@@ -318,7 +333,7 @@ a {
     size: 25px;
 
     @include breakpoint($m) {
-      size: 40px;
+      size: 30px;
     }
     &.icon-skype {
       background-image: svg("social-skype.svg", "[fill]: #fff");
