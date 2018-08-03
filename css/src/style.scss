@@ -93,6 +93,10 @@ body {
   line-height: 1.3;
 }
 
+body {
+  background: linear-gradient(90deg, #22a7f0 0%, #09b59b 100%);
+}
+
 a {
   text-decoration: none;
 }
@@ -110,6 +114,16 @@ a {
 // @import "node_modules/inuitcss/objects/objects.table";
 // @import "node_modules/inuitcss/objects/objects.pack";
 // @import "objects";
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 // COMPONENTS - particular component theming
@@ -119,30 +133,19 @@ a {
 // @import "node_modules/fullpage.js/dist/jquery.fullpage";
 // @import "layouts";
 .l-page {
-  // align-items: center;
-  background: linear-gradient(90deg, #22a7f0 0%, #09b59b 100%);
   color: white;
-  display: flex;
+  display: grid;
+  grid-gap: 30px;
   flex-direction: column;
-  // min-height: 100%;
   min-height: 100vh;
+  padding: 20px;
   position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-image: url('../../pattern.png');
-    // background-size: cover;
-    // background-repeat: no-repeat;
-  }
-
-  // @include breakpoint($m) {
-  //   height: 100%;
-  // }
-  // grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "content content"
+                        "footer-left footer-right";
+                        background: url("../../pattern.png") 50% 50%/110px 110px;
   a {
     color: white;
   }
@@ -156,16 +159,12 @@ a {
   display: block;
   font-weight: 700;
   line-height: 22px;
-  // margin: 30px auto auto auto;
+  margin: auto;
   padding: 11px 60px 11px 24px;
   position: relative;
   text-decoration: none;
   width: 200px;
-  margin: auto;
-
-  @include breakpoint($s) {
-    display: inline-block;
-  }
+  transition: all 0.3s ease 0s;
   &:after {
     background-image: svg("right-arrow.svg", "[fill]: #fff");
     background-position: center;
@@ -176,6 +175,8 @@ a {
     right: 24px;
     size: 20px;
     top: 50%;
+    transition: all 0.3s ease 0s;
+    
     transform: translateY(-50%);
   }
   &:hover {
@@ -187,34 +188,17 @@ a {
   }
 }
 
-// .info__button--dark {
-//   &:hover {
-//     color: white;
-//     background-color: #1560FB;
-//     color: #1560FB;
-//     background-color: white;
-//   }
-//   color: white;
-//   background: #1560FB;
-//   border-color: white;
-// }
-
 .c-info {
   margin: 0 auto;
   max-width: 800px;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
+  display: grid;
+  grid-gap: 1.5em;
   text-align: center;
-
-  // @include breakpoint($m) {
-  // position: relative;
-  // top: 10%;
-  // transform: translateY(-50%);
-  // }
-   > * {
-    margin-bottom: 30px;
-    margin-top: 30px;
+  align-self: flex-start;
+  grid-area: content;
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -227,8 +211,8 @@ a {
 .c-info__headshot {
   border-radius: 200px;
   box-shadow: 0 5px 10px darken($color-blue, 10%);
-  display: block;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   size: 170px;
 }
 
@@ -239,9 +223,6 @@ a {
   @include breakpoint($s) {
     font-size: 24px;
   }
-  // @include breakpoint($m) {
-  //   font-size: 28px;
-  // }
 }
 
 .c-info__subtitle {
@@ -251,42 +232,22 @@ a {
   @include breakpoint($s) {
     font-size: 18px;
   }
-  // @include breakpoint($m) {
-  //   font-size: 20px;
-  // }
-}
-
-.c-cta {
-  // background-color: $color-green;
-  display: grid;
-  // grid-template-columns: 1fr;
-  // padding: 1em 2em;
-  grid-gap: 30px;
-
-  @include breakpoint($s) {
-    // align-items: center;
-    // @include grid($align-items: center, $gutter: 20px, $justify-content: space-around);
-    // grid-template-columns: 3fr 2fr;
-  }
-   > * {
-    @include breakpoint($s) {
-      // @include grid-col($col: 6, $gutter: 20px);
-    }
-  }
 }
 
 .c-pin {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: fadeUp;
+  animation-timing-function: ease-in;
   font-size: 12px;
-  margin-bottom: 20px;
-  margin-top: auto;
-  text-align: center;
+  opacity: 0;
+  transition: 0.3s color ease;
+  grid-area: footer-left;
 
   @include breakpoint($m) {
     bottom: 23px;
     font-size: 18px;
     left: 20px;
-    margin: 0;
-    position: absolute;
   }
   a {
     &:before {
@@ -308,32 +269,45 @@ a {
 }
 
 .c-social {
+  grid-area: footer-right;
   display: flex;
   justify-content: space-around;
-  margin: auto 0 0;
-  padding: 0 10px;
+  margin: 0;
+  padding: 0;
 
   @include breakpoint($m) {
-    bottom: 20px;
     padding: 0;
     position: absolute;
-    right: 10px;
+    right: 0;
   }
 }
 
 .c-social__item {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: fadeUp;
+  animation-timing-function: ease-in;
   display: block;
-  margin: 0 1em;
+  margin: 0 0.5em;
+  opacity: 0;
+  transition: 0.3s color ease;
+
+  $animation-factor: 0.4s;
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: $animation-factor * $i;
+    }
+  }
   a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     display: block;
     font-size: 0;
-    size: 25px;
+    size: 14px;
 
     @include breakpoint($m) {
-      size: 30px;
+      size: 20px;
     }
     &.icon-skype {
       background-image: svg("social-skype.svg", "[fill]: #fff");
@@ -354,18 +328,6 @@ a {
       background-image: svg("social-linkedin.svg", "[fill]: #fff");
     }
   }
-}
-
-.fade-enter-active {
-  transition: opacity 3s ease-in-out;
-}
-
-.fade-enter-to {
-  opacity: 1;
-}
-
-.fade-enter {
-  opacity: 0;
 }
 
 
