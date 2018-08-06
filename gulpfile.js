@@ -20,11 +20,11 @@ var gulp = require('gulp'),
       cascade: false
     }),
     gp_assets({
-      loadPaths: ['images/'],
+      loadPaths: ['images', 'images/svg']
     }),
     gp_postcss_size,
     postcss_svg({
-      paths: ['svg']
+      paths: ['images/svg']
     })
   ],
   jsfiles = [
@@ -62,8 +62,8 @@ gulp.task('styles', function () {
     .pipe(gp_sourcemaps.write())
     .pipe(gulp.dest('css/dist'))
     .pipe(gp_filter('**/*.css'))
-    .pipe(gp_livereload());
-  // .pipe(browserSync.reload({stream: true}));
+    // .pipe(gp_livereload());
+    .pipe(browserSync.reload({stream: true}));
 });
 
 //CSS MINIFY
@@ -101,6 +101,18 @@ gulp.task('watch', function () {
   gulp.watch(jsfiles, ['scripts']);
   gp_livereload.listen();
   // gulp.watch('*.html').on('change', browserSync.reload);
+});
+
+gulp.task('w', ['styles'], function () {
+  browserSync.init({
+    server: ".",
+    index: "index.html",
+    host: "192.168.1.104",
+    logLevel: "debug",
+    port: 8000
+  });
+  gulp.watch(scssfiles, ['styles']);
+  gulp.watch('*.html').on('change', browserSync.reload);
 });
 
 //DEFAULT

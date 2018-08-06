@@ -132,7 +132,7 @@ a {
 // @import "layouts";
 .l-page {
   align-items: flex-end;
-  background-image: svg("landscape.svg", "[fill]: #fff");
+  background-image: resolve("landscape.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -322,8 +322,6 @@ a {
     font-size: 0;
     size: 24px;
 
-    @include breakpoint($m) {
-    }
     &.icon-skype {
       background-image: svg("social-skype.svg", "[fill]: #fff");
     }
