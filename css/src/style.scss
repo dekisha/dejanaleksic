@@ -57,8 +57,6 @@ $upto-xl: max-width ($xl  - 1px);
 $upto-xxl: max-width ($xxl - 1px);
 
 
-
-
 // TOOLS - mixins
 // @import "node_modules/inuitcss/tools/tools.font-size";
 // @import "node_modules/inuitcss/tools/tools.clearfix";
@@ -133,23 +131,34 @@ a {
 // @import "node_modules/fullpage.js/dist/jquery.fullpage";
 // @import "layouts";
 .l-page {
+  align-items: flex-end;
+  background-image: svg("landscape.svg", "[fill]: #fff");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   display: grid;
-  grid-gap: 30px;
   flex-direction: column;
+  grid-gap: 30px;
+  grid-template-areas: "header"
+  "content"
+  "footer-right"
+  "footer-left";
   min-height: 100vh;
+  overflow: hidden;
   padding: 20px;
   position: relative;
-  align-items: flex-end;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: "content content"
-                        "footer-left footer-right";
-                        background: url("../../pattern.png") 50% 50%/110px 110px;
+
+  @include breakpoint($s) {
+    grid-template-areas: "header header"
+    "content content"
+    "footer-left footer-right";
+  }
   a {
     color: white;
   }
 }
+
 // @import "components";
 .c-btn {
   border-radius: 3px;
@@ -163,8 +172,8 @@ a {
   padding: 11px 60px 11px 24px;
   position: relative;
   text-decoration: none;
-  width: 200px;
   transition: all 0.3s ease 0s;
+  width: 200px;
   &:after {
     background-image: svg("right-arrow.svg", "[fill]: #fff");
     background-position: center;
@@ -175,9 +184,8 @@ a {
     right: 24px;
     size: 20px;
     top: 50%;
-    transition: all 0.3s ease 0s;
-    
     transform: translateY(-50%);
+    transition: all 0.3s ease 0s;
   }
   &:hover {
     background-color: white;
@@ -189,16 +197,20 @@ a {
 }
 
 .c-info {
+  align-self: flex-start;
+  display: grid;
+  grid-area: header;
+  grid-gap: 1.5em;
   margin: 0 auto;
   max-width: 800px;
-  display: grid;
-  grid-gap: 1.5em;
   text-align: center;
-  align-self: flex-start;
-  grid-area: content;
-  > * {
-    margin-top: 0;
+
+  @include breakpoint($m) {
+    grid-area: content;
+  }
+   > * {
     margin-bottom: 0;
+    margin-top: 0;
   }
 }
 
@@ -235,14 +247,15 @@ a {
 }
 
 .c-pin {
+  animation-delay: 1.2s;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   animation-name: fadeUp;
   animation-timing-function: ease-in;
   font-size: 12px;
+  grid-area: footer-left;
   opacity: 0;
   transition: 0.3s color ease;
-  grid-area: footer-left;
 
   @include breakpoint($m) {
     bottom: 23px;
@@ -254,11 +267,11 @@ a {
       background-image: svg("flag.svg", "[fill]: #fff");
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 20px;
+      background-size: contain;
       content: "";
       display: inline-block;
       margin-right: 4px;
-      size: 20px;
+      size: 24px;
       vertical-align: middle;
     }
     span {
@@ -269,16 +282,14 @@ a {
 }
 
 .c-social {
-  grid-area: footer-right;
   display: flex;
-  justify-content: space-around;
+  grid-area: footer-right;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
 
   @include breakpoint($m) {
-    padding: 0;
-    position: absolute;
-    right: 0;
+    justify-content: flex-end;
   }
 }
 
@@ -288,14 +299,19 @@ a {
   animation-name: fadeUp;
   animation-timing-function: ease-in;
   display: block;
-  margin: 0 0.5em;
+  margin: 0;
   opacity: 0;
   transition: 0.3s color ease;
 
   $animation-factor: 0.4s;
+  @include breakpoint($m) {
+  }
+  &:not(:first-child) {
+    margin-left: 1em;
+  }
   @for $i from 1 through 6 {
     &:nth-child(#{$i}) {
-      animation-delay: $animation-factor * $i;
+      animation-delay: 1.2s + $animation-factor * $i;
     }
   }
   a {
@@ -304,10 +320,9 @@ a {
     background-size: contain;
     display: block;
     font-size: 0;
-    size: 14px;
+    size: 24px;
 
     @include breakpoint($m) {
-      size: 20px;
     }
     &.icon-skype {
       background-image: svg("social-skype.svg", "[fill]: #fff");
