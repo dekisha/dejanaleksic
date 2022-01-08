@@ -8,9 +8,9 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "breakpoint-sass": "^2.7.1",
-    "browser-sync": "^2.12.12",
+    "browser-sync": "^2.27.7",
     "coffee-script": "~1.6.3",
-    "flexbox-grid-mixins": "^0.1.4",
+    "flexbox-grid-mixins": "^0.1.6",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-filter": "^4.0.0",
@@ -22,16 +22,16 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "headroom.js": "^0.9.4",
-    "node-normalize-scss": "^8.0.0",
+    "node-normalize-scss": "^8.1.2",
     "postcss-assets": "^3.0.3",
     "postcss-size": "^1.0.0",
     "postcss-svg": "^1.0.5",
-    "vue-spinkit": "^1.4.0"
+    "vue-spinkit": "^1.7.12"
   },
   "scripts": {
     "postinstall": "find node_modules/ -name \"*.info\" -type f -delete"
   },
   "dependencies": {
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.1"
   }
 }
