@@ -7,12 +7,10 @@
   <meta name="keywords" content="aleksic, dejan aleksic, drupal themer, front-end, frontend, drupal front-end developer">
   <meta name="description" content="Personal website of Dejan Aleksic. Drupal Front-End developer from Novi Sad, Serbia.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="cleartype" content="on">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700" rel="stylesheet">
   <link rel="stylesheet" href="/css/dist/style.css">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
@@ -33,7 +31,7 @@
       <li class="c-social__item"><a href="https://www.upwork.com/freelancers/~0112ddc01368273b87" class="icon-upwork" title="Hire me on Upwork!"><em>Upwork</em></a></li>
     </ul>
     <div class="c-pin">
-      <a href="https://www.wikiwand.com/en/Novi_Sad" target="_blank"><span>Novi Sad, Serbia</span></a>
+      <a href="https://www.wikiwand.com/en/Novi_Sad" target="_blank" rel="noreferrer"><span>Novi Sad, Serbia</span></a>
     </div>
     <!-- <div class="c-resume"></div> -->
 
@@ -50,21 +48,6 @@
 
     gtag('js', new Date());
     gtag('config', 'UA-118976012-1');
-
-
-    new Vue({
-      el: '#app',
-      data: {
-        loaded: false
-      },
-      methods: {
-        loadingFn: function() {
-          setTimeout(() => {
-            this.loaded = true;
-          }, 3000)
-        }
-      }
-    });
   </script>
 
 </body>
