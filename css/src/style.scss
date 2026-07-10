@@ -71,7 +71,7 @@ $upto-xxl: max-width ($xxl - 1px);
 // @import "node_modules/inuitcss/generic/generic.normalize";
 // @import "node_modules/inuitcss/generic/generic.reset";
 // @import "node_modules/inuitcss/generic/generic.shared";
-@import "node_modules/node-normalize-scss/normalize";
+@import "node_modules/normalize.css/normalize";
 
 
 // ELEMENTS - default element style
@@ -132,7 +132,7 @@ a {
 // @import "layouts";
 .l-page {
   align-items: flex-end;
-  background-image: resolve("landscape.svg");
+  background-image: url("../../images/landscape.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -175,7 +175,7 @@ a {
   transition: all 0.3s ease 0s;
   width: 200px;
   &:after {
-    background-image: svg("right-arrow.svg", "[fill]: #fff");
+    background-image: url("../../images/svg/right-arrow.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -191,7 +191,7 @@ a {
     background-color: white;
     color: $color-blue;
     &:after {
-      background-image: svg("right-arrow.svg", "[fill]: #{$color-blue}");
+      background-image: url("../../images/svg/right-arrow.svg");
     }
   }
 }
@@ -264,7 +264,7 @@ a {
   }
   a {
     &:before {
-      background-image: svg("flag.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/flag.svg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -323,22 +323,22 @@ a {
     size: 24px;
 
     &.icon-skype {
-      background-image: svg("social-skype.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/social-skype.svg");
     }
     &.icon-facebook {
-      background-image: svg("social-facebook.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/social-facebook.svg");
     }
     &.icon-twitter {
-      background-image: svg("social-twitter.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/social-twitter.svg");
     }
     &.icon-github {
-      background-image: svg("social-github.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/social-github.svg");
     }
     &.icon-upwork {
-      background-image: svg("social-upwork.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/social-upwork.svg");
     }
     &.icon-linkedin {
-      background-image: svg("social-linkedin.svg", "[fill]: #fff");
+      background-image: url("../../images/svg/social-linkedin.svg");
     }
   }
 }
