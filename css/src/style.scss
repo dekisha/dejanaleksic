@@ -175,11 +175,16 @@ a {
   transition: all 0.3s ease 0s;
   width: 200px;
   &:after {
-    background-image: inline('right-arrow.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 20px;
+    background-color: currentColor;
     content: "";
+    mask-image: inline('right-arrow.svg');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 20px;
+    -webkit-mask-image: inline('right-arrow.svg');
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 20px;
     position: absolute;
     right: 24px;
     size: 20px;
@@ -190,9 +195,6 @@ a {
   &:hover {
     background-color: white;
     color: $color-blue;
-    &:after {
-      background-image: inline('right-arrow.svg');
-    }
   }
 }
 
@@ -264,13 +266,18 @@ a {
   }
   a {
     &:before {
-      background-image: inline('flag.svg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
+      background-color: currentColor;
       content: "";
       display: inline-block;
       margin-right: 4px;
+      mask-image: inline('flag.svg');
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      -webkit-mask-image: inline('flag.svg');
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
       size: 24px;
       vertical-align: middle;
     }
@@ -315,30 +322,40 @@ a {
     }
   }
   a {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    background-color: currentColor;
     display: block;
     font-size: 0;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
     size: 24px;
 
     &.icon-skype {
-      background-image: inline('social-skype.svg');
+      mask-image: inline('social-skype.svg');
+      -webkit-mask-image: inline('social-skype.svg');
     }
     &.icon-facebook {
-      background-image: inline('social-facebook.svg');
+      mask-image: inline('social-facebook.svg');
+      -webkit-mask-image: inline('social-facebook.svg');
     }
     &.icon-twitter {
-      background-image: inline('social-twitter.svg');
+      mask-image: inline('social-twitter.svg');
+      -webkit-mask-image: inline('social-twitter.svg');
     }
     &.icon-github {
-      background-image: inline('social-github.svg');
+      mask-image: inline('social-github.svg');
+      -webkit-mask-image: inline('social-github.svg');
     }
     &.icon-upwork {
-      background-image: inline('social-upwork.svg');
+      mask-image: inline('social-upwork.svg');
+      -webkit-mask-image: inline('social-upwork.svg');
     }
     &.icon-linkedin {
-      background-image: inline('social-linkedin.svg');
+      mask-image: inline('social-linkedin.svg');
+      -webkit-mask-image: inline('social-linkedin.svg');
     }
   }
 }
