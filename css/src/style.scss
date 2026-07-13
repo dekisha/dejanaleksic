@@ -132,7 +132,7 @@ a {
 // @import "layouts";
 .l-page {
   align-items: flex-end;
-  background-image: url("../../images/landscape.svg");
+  background-image: inline('landscape.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -175,7 +175,7 @@ a {
   transition: all 0.3s ease 0s;
   width: 200px;
   &:after {
-    background-image: url("../../images/svg/right-arrow.svg");
+    background-image: inline('right-arrow.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -191,7 +191,7 @@ a {
     background-color: white;
     color: $color-blue;
     &:after {
-      background-image: url("../../images/svg/right-arrow.svg");
+      background-image: inline('right-arrow.svg');
     }
   }
 }
@@ -264,7 +264,7 @@ a {
   }
   a {
     &:before {
-      background-image: url("../../images/svg/flag.svg");
+      background-image: inline('flag.svg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -323,26 +323,25 @@ a {
     size: 24px;
 
     &.icon-skype {
-      background-image: url("../../images/svg/social-skype.svg");
+      background-image: inline('social-skype.svg');
     }
     &.icon-facebook {
-      background-image: url("../../images/svg/social-facebook.svg");
+      background-image: inline('social-facebook.svg');
     }
     &.icon-twitter {
-      background-image: url("../../images/svg/social-twitter.svg");
+      background-image: inline('social-twitter.svg');
     }
     &.icon-github {
-      background-image: url("../../images/svg/social-github.svg");
+      background-image: inline('social-github.svg');
     }
     &.icon-upwork {
-      background-image: url("../../images/svg/social-upwork.svg");
+      background-image: inline('social-upwork.svg');
     }
     &.icon-linkedin {
-      background-image: url("../../images/svg/social-linkedin.svg");
+      background-image: inline('social-linkedin.svg');
     }
   }
 }
-
 
 // UTILITIES - do one thing, and one thing only classes
 // @import "node_modules/inuitcss/utilities/utilities.clearfix";
