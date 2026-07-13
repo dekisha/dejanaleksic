@@ -168,7 +168,7 @@ a {
   display: block;
   font-weight: 700;
   line-height: 22px;
-  margin: auto;
+  margin: 0;
   padding: 11px 60px 11px 24px;
   position: relative;
   text-decoration: none;
@@ -243,6 +243,50 @@ a {
 
   @include breakpoint($s) {
     font-size: 18px;
+  }
+}
+
+.c-info__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-email {
+  cursor: pointer;
+  position: relative;
+
+  &__tooltip {
+    background-color: rgba(black, 0.75);
+    border-radius: 3px;
+    bottom: calc(100% + 8px);
+    color: white;
+    font-size: 12px;
+    left: 50%;
+    opacity: 0;
+    padding: 4px 10px;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+
+    &:after {
+      border: 5px solid transparent;
+      border-top-color: rgba(black, 0.75);
+      content: "";
+      left: 50%;
+      position: absolute;
+      top: 100%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &:hover &__tooltip,
+  &.is-copied &__tooltip {
+    opacity: 1;
   }
 }
 
