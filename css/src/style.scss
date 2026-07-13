@@ -219,10 +219,12 @@ a {
 }
 
 .c-info__headshot {
+  background: linear-gradient(135deg, $color-blue, $color-green);
   border-radius: 200px;
-  box-shadow: 0 5px 10px darken($color-blue, 10%);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin-left: auto;
   margin-right: auto;
+  outline: 4px solid rgba(255, 255, 255, 0.3);
   size: 170px;
 }
 
@@ -265,7 +267,7 @@ a {
       background-color: currentColor;
       content: "";
       display: inline-block;
-      margin-right: 4px;
+      margin-right: 8px;
       mask-image: inline('flag.svg');
       mask-position: center;
       mask-repeat: no-repeat;
