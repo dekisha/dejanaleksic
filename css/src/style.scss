@@ -354,7 +354,7 @@ a {
   &:not(:first-child) {
     margin-left: 1em;
   }
-  @for $i from 1 through 6 {
+  @for $i from 1 through 7 {
     &:nth-child(#{$i}) {
       animation-delay: 1.2s + $animation-factor * $i;
     }
@@ -379,6 +379,9 @@ a {
     }
     &.icon-github {
       mask-image: inline('social-github.svg');
+    }
+    &.icon-drupal {
+      mask-image: inline('social-drupal.svg');
     }
     &.icon-upwork {
       mask-image: inline('social-upwork.svg');
