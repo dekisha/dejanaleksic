@@ -20,7 +20,7 @@
   <div class="l-page">
     <main class="l-page__main">
       <header class="c-profile">
-        <img class="c-profile__headshot" src="deki.png" alt="Dejan Aleksic" width="88" height="88" />
+        <img class="c-profile__headshot" src="deki.png" alt="" width="88" height="88" />
         <div class="c-profile__info">
           <div class="c-profile__name">Dejan Aleksić</div>
           <div class="c-profile__location">Serbia</div>
@@ -32,13 +32,24 @@
         <h1 class="c-intro__title">I'm Deki, a front-end expert, Drupal site builder and IT consultant.</h1>
         <p class="c-intro__subtitle">Interested in working together? Let's set up a meeting. Beers are on me.</p>
         <div class="c-intro__cta">
-          <a class="c-btn" target="_blank" href="Dejan_Aleksic_CV_Drupal.pdf">View my CV</a>
+          <a class="c-btn" target="_blank" href="Dejan_Aleksic_CV_Drupal.pdf">View my CV<span class="u-visually-hidden"> (opens in new tab)</span></a>
           <button
             type="button"
             class="c-email"
-            x-data="{ email: 'dejanaleksic989@gmail.com', copied: false }"
+            x-data="{
+              email: 'dejanaleksic989@gmail.com',
+              copied: false,
+              copy() {
+                const openMail = () => { window.location.href = 'mailto:' + this.email };
+                if (!navigator.clipboard) return openMail();
+                navigator.clipboard.writeText(this.email).then(() => {
+                  this.copied = true;
+                  setTimeout(() => this.copied = false, 2000);
+                }, openMail);
+              }
+            }"
             :class="{ 'is-copied': copied }"
-            @click="navigator.clipboard.writeText(email); copied = true; setTimeout(() => copied = false, 2000)"
+            @click="copy()"
           >
             <span class="c-email__tooltip" aria-live="polite" x-text="copied ? 'Copied!' : 'Click to copy'"></span>
             <span x-text="email">dejanaleksic989@gmail.com</span>
@@ -57,24 +68,25 @@
                   <span class="c-badge c-badge--live">Live</span>
                 </span>
                 <span class="c-apps__desc">Every Drupal field value in Twig, copy-ready.</span>
+                <span class="u-visually-hidden">(opens in new tab)</span>
               </span>
               <svg class="c-apps__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg>
             </a>
           </li>
         </ul>
       </section>
-
-      <footer class="c-footer">
-        <ul class="c-social">
-          <li class="c-social__item"><a href="https://www.linkedin.com/in/aleksicdejan" class="c-social__link icon-linkedin" aria-label="LinkedIn"></a></li>
-          <li class="c-social__item"><a href="https://github.com/dekisha" class="c-social__link icon-github" aria-label="GitHub"></a></li>
-          <li class="c-social__item"><a href="https://www.drupal.org/u/dekisha" class="c-social__link icon-drupal" aria-label="Drupal.org"></a></li>
-          <li class="c-social__item"><a href="https://www.upwork.com/freelancers/~0112ddc01368273b87" class="c-social__link icon-upwork" aria-label="Upwork"></a></li>
-          <li class="c-social__item"><a href="https://twitter.com/dekisha007" class="c-social__link icon-twitter" aria-label="Twitter"></a></li>
-          <li class="c-social__item"><a href="https://www.facebook.com/dekisha007" class="c-social__link icon-facebook" aria-label="Facebook"></a></li>
-        </ul>
-      </footer>
     </main>
+
+    <footer class="c-footer">
+      <ul class="c-social">
+        <li class="c-social__item"><a href="https://www.linkedin.com/in/aleksicdejan" class="c-social__link icon-linkedin" aria-label="LinkedIn"></a></li>
+        <li class="c-social__item"><a href="https://github.com/dekisha" class="c-social__link icon-github" aria-label="GitHub"></a></li>
+        <li class="c-social__item"><a href="https://www.drupal.org/u/dekisha" class="c-social__link icon-drupal" aria-label="Drupal.org"></a></li>
+        <li class="c-social__item"><a href="https://www.upwork.com/freelancers/~0112ddc01368273b87" class="c-social__link icon-upwork" aria-label="Upwork"></a></li>
+        <li class="c-social__item"><a href="https://twitter.com/dekisha007" class="c-social__link icon-twitter" aria-label="Twitter"></a></li>
+        <li class="c-social__item"><a href="https://www.facebook.com/dekisha007" class="c-social__link icon-facebook" aria-label="Facebook"></a></li>
+      </ul>
+    </footer>
   </div>
 
   <!-- Google tag (gtag.js) -->

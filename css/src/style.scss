@@ -141,14 +141,17 @@ button:focus-visible {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+  align-items: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
   min-height: 100vh;
   overflow: hidden;
   padding: 56px 20px 48px;
   position: relative;
 
   @include breakpoint($m) {
+    gap: 48px;
     padding: 96px 24px 64px;
   }
   a {
@@ -473,6 +476,9 @@ button:focus-visible {
 }
 
 .c-footer {
+  max-width: 620px;
+  width: 100%;
+
   @include breakpoint($m) {
     padding-top: 8px;
   }
@@ -545,3 +551,14 @@ button:focus-visible {
 // @import "node_modules/inuitcss/utilities/utilities.hide";
 // @import "node_modules/inuit-displays/inuit-displays.scss";
 // @import "utilities";
+.u-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
