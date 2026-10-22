@@ -37,7 +37,12 @@
 // SETTINGS - colors, fonts, breakpoints...
 // Colors
 $color-blue: #22a7f0;
-$color-green: #09b59b;
+$color-green: #0ab59c;
+
+// Fonts
+$font-heading: "Bricolage Grotesque", sans-serif;
+$font-body: "Inter", system-ui, sans-serif;
+$font-mono: "JetBrains Mono", monospace;
 
 // Breakpoints: Min-width
 $xs: 480px;
@@ -86,17 +91,27 @@ $upto-xxl: max-width ($xxl - 1px);
 
 html,
 body {
-  font-family: "Titillium Web", sans-serif;
-  height: 100%;
-  line-height: 1.3;
+  font-family: $font-body;
+  min-height: 100%;
+  line-height: 1.5;
 }
 
 body {
-  background: linear-gradient(90deg, #22a7f0 0%, #09b59b 100%);
+  background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+
+  @include breakpoint($m) {
+    background: linear-gradient(90deg, $color-blue 0%, $color-green 100%);
+  }
 }
 
 a {
   text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
 }
 
 
@@ -112,16 +127,6 @@ a {
 // @import "node_modules/inuitcss/objects/objects.table";
 // @import "node_modules/inuitcss/objects/objects.pack";
 // @import "objects";
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 
 // COMPONENTS - particular component theming
@@ -131,62 +136,67 @@ a {
 // @import "node_modules/fullpage.js/dist/jquery.fullpage";
 // @import "layouts";
 .l-page {
-  align-items: flex-end;
   background-image: inline('landscape.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  display: grid;
-  flex-direction: column;
-  grid-gap: 30px;
-  grid-template-areas: "header"
-  "content"
-  "footer-right"
-  "footer-left";
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  padding: 20px;
+  padding: 56px 20px 48px;
   position: relative;
 
-  @include breakpoint($s) {
-    grid-template-areas: "header header"
-    "content content"
-    "footer-left footer-right";
+  @include breakpoint($m) {
+    padding: 96px 24px 64px;
   }
   a {
     color: white;
   }
 }
 
+.l-page__main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 620px;
+  width: 100%;
+
+  @include breakpoint($m) {
+    gap: 48px;
+  }
+}
+
 // @import "components";
 .c-btn {
+  align-items: center;
+  align-self: stretch;
+  border: 2px solid white;
   border-radius: 3px;
-  border-style: solid;
-  border-width: 2px;
   color: white;
-  display: block;
-  font-weight: 700;
-  line-height: 22px;
-  margin: 0;
-  padding: 11px 60px 11px 24px;
-  position: relative;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 600;
+  gap: 10px;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
   text-decoration: none;
   transition: all 0.3s ease 0s;
-  width: 200px;
+
+  @include breakpoint($m) {
+    align-self: auto;
+    padding: 0 24px;
+  }
   &:after {
     background-color: currentColor;
     content: "";
     mask-image: inline('right-arrow.svg');
     mask-position: center;
     mask-repeat: no-repeat;
-    mask-size: 20px;
-    position: absolute;
-    right: 24px;
-    size: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all 0.3s ease 0s;
+    mask-size: 18px;
+    size: 18px;
   }
   &:hover {
     background-color: white;
@@ -194,74 +204,132 @@ a {
   }
 }
 
-.c-info {
-  align-self: flex-start;
-  display: grid;
-  grid-area: header;
-  grid-gap: 1.5em;
-  margin: 0 auto;
-  max-width: 800px;
-  text-align: center;
+.c-profile {
+  align-items: center;
+  display: flex;
+  gap: 14px;
 
   @include breakpoint($m) {
-    grid-area: content;
-  }
-   > * {
-    margin-bottom: 0;
-    margin-top: 0;
+    gap: 16px;
   }
 }
 
-.c-info__tag {
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.6;
-}
-
-.c-info__headshot {
+.c-profile__headshot {
   background: linear-gradient(135deg, $color-blue, $color-green);
-  border-radius: 200px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  margin-left: auto;
-  margin-right: auto;
-  outline: 4px solid rgba(255, 255, 255, 0.3);
-  size: 170px;
-}
+  border: 3px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+  size: 56px;
 
-.c-info__title {
-  font-size: 18px;
-  font-weight: 700;
-
-  @include breakpoint($s) {
-    font-size: 24px;
+  @include breakpoint($m) {
+    size: 64px;
   }
 }
 
-.c-info__subtitle {
-  font-size: 14px;
-  font-weight: 300;
+.c-profile__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-  @include breakpoint($s) {
+.c-profile__name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.c-profile__status {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+
+  @include breakpoint($m) {
+    font-size: 14px;
+  }
+  &:before {
+    background-color: white;
+    border-radius: 50%;
+    content: "";
+    flex-shrink: 0;
+    size: 8px;
+  }
+}
+
+.c-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include breakpoint($m) {
+    gap: 20px;
+  }
+}
+
+.c-intro__title {
+  font-family: $font-heading;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+
+  @include breakpoint($m) {
+    font-size: 48px;
+    line-height: 1.08;
+  }
+}
+
+.c-intro__subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0;
+
+  @include breakpoint($m) {
     font-size: 18px;
   }
 }
 
-.c-info__cta {
+.c-intro__cta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+
+  @include breakpoint($m) {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
 }
 
 .c-email {
+  align-self: center;
+  background: none;
+  border: 0;
+  color: white;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 0;
   position: relative;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  @include breakpoint($m) {
+    align-self: auto;
+  }
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
 
   &__tooltip {
     background-color: rgba(black, 0.75);
     border-radius: 3px;
-    bottom: calc(100% + 8px);
+    bottom: 100%;
     color: white;
     font-size: 12px;
     left: 50%;
@@ -285,110 +353,173 @@ a {
   }
 
   &:hover &__tooltip,
+  &:focus-visible &__tooltip,
   &.is-copied &__tooltip {
     opacity: 1;
   }
 }
 
-.c-pin {
-  animation-delay: 1.2s;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-name: fadeUp;
-  animation-timing-function: ease-in;
+.c-apps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.c-apps__label {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: $font-mono;
   font-size: 12px;
-  grid-area: footer-left;
-  opacity: 0;
-  transition: 0.3s color ease;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.c-apps__list {
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-apps__item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.c-apps__link {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  padding: 16px 2px;
+  transition: background-color 0.3s ease 0s;
 
   @include breakpoint($m) {
-    bottom: 23px;
-    font-size: 18px;
-    left: 20px;
+    gap: 16px;
+    padding: 18px 4px;
   }
-  a {
-    &:before {
-      background-color: currentColor;
-      content: "";
-      display: inline-block;
-      margin-right: 8px;
-      mask-image: inline('flag.svg');
-      mask-position: center;
-      mask-repeat: no-repeat;
-      mask-size: contain;
-      size: 24px;
-      vertical-align: middle;
-    }
-    span {
-      color: white;
-      opacity: 0.6;
-    }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.c-apps__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+
+  @include breakpoint($m) {
+    gap: 4px;
+  }
+}
+
+.c-apps__heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @include breakpoint($m) {
+    gap: 10px;
+  }
+}
+
+.c-apps__name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.c-apps__desc {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.c-apps__icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease 0s;
+}
+
+.c-apps__link:hover .c-apps__icon {
+  transform: translate(2px, -2px);
+}
+
+.c-badge {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+
+  &--live {
+    background-color: white;
+    border-color: white;
+    color: #0b6e8c;
+  }
+}
+
+.c-footer {
+  @include breakpoint($m) {
+    padding-top: 8px;
   }
 }
 
 .c-social {
   display: flex;
-  grid-area: footer-right;
-  justify-content: space-between;
-  margin: 0;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0 -10px;
   padding: 0;
-
-  @include breakpoint($m) {
-    justify-content: flex-end;
-  }
 }
 
 .c-social__item {
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-name: fadeUp;
-  animation-timing-function: ease-in;
   display: block;
   margin: 0;
-  opacity: 0;
-  transition: 0.3s color ease;
+}
 
-  $animation-factor: 0.4s;
-  @include breakpoint($m) {
-  }
-  &:not(:first-child) {
-    margin-left: 1em;
-  }
-  @for $i from 1 through 7 {
-    &:nth-child(#{$i}) {
-      animation-delay: 1.2s + $animation-factor * $i;
-    }
-  }
-  a {
+.c-social__link {
+  align-items: center;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  size: 44px;
+  transition: background-color 0.3s ease 0s;
+
+  &:before {
     background-color: currentColor;
-    display: block;
-    font-size: 0;
+    content: "";
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
     size: 24px;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
 
-    &.icon-skype {
-      mask-image: inline('social-skype.svg');
-    }
-    &.icon-facebook {
-      mask-image: inline('social-facebook.svg');
-    }
-    &.icon-twitter {
-      mask-image: inline('social-twitter.svg');
-    }
-    &.icon-github {
-      mask-image: inline('social-github.svg');
-    }
-    &.icon-drupal {
-      mask-image: inline('social-drupal.svg');
-    }
-    &.icon-upwork {
-      mask-image: inline('social-upwork.svg');
-    }
-    &.icon-linkedin {
-      mask-image: inline('social-linkedin.svg');
-    }
+  &.icon-skype:before {
+    mask-image: inline('social-skype.svg');
+  }
+  &.icon-facebook:before {
+    mask-image: inline('social-facebook.svg');
+  }
+  &.icon-twitter:before {
+    mask-image: inline('social-twitter.svg');
+  }
+  &.icon-github:before {
+    mask-image: inline('social-github.svg');
+  }
+  &.icon-drupal:before {
+    mask-image: inline('social-drupal.svg');
+  }
+  &.icon-upwork:before {
+    mask-image: inline('social-upwork.svg');
+  }
+  &.icon-linkedin:before {
+    mask-image: inline('social-linkedin.svg');
   }
 }
 
