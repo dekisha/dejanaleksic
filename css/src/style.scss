@@ -36,8 +36,12 @@
 
 // SETTINGS - colors, fonts, breakpoints...
 // Colors
-$color-blue: #22a7f0;
-$color-green: #0ab59c;
+// Gradient stops chosen so white text meets WCAG AA (4.5:1) across the
+// whole gradient. Originally #22a7f0 / #0ab59c.
+$color-blue: #197bb1;
+$color-blue-dark: #2b4fa8;
+$color-navy: #06263a;
+$color-teal-dark: #0b6e8c;
 
 // Fonts
 $font-heading: "Bricolage Grotesque", sans-serif;
@@ -97,10 +101,10 @@ body {
 }
 
 body {
-  background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+  background: linear-gradient(135deg, $color-blue 0%, $color-blue-dark 100%);
 
   @include breakpoint($m) {
-    background: linear-gradient(90deg, $color-blue 0%, $color-green 100%);
+    background: linear-gradient(90deg, $color-blue 0%, $color-blue-dark 100%);
   }
 }
 
@@ -108,10 +112,12 @@ a {
   text-decoration: none;
 }
 
+// White outline with a navy inner ring, visible on any part of the gradient.
 a:focus-visible,
 button:focus-visible {
+  box-shadow: 0 0 0 2px $color-navy;
   outline: 2px solid white;
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 
@@ -203,7 +209,7 @@ button:focus-visible {
   }
   &:hover {
     background-color: white;
-    color: $color-blue;
+    color: $color-teal-dark;
   }
 }
 
@@ -218,7 +224,7 @@ button:focus-visible {
 }
 
 .c-profile__headshot {
-  background: linear-gradient(135deg, $color-blue, $color-green);
+  background: linear-gradient(135deg, $color-blue, $color-blue-dark);
   border: 3px solid rgba(255, 255, 255, 0.45);
   border-radius: 50%;
   flex-shrink: 0;
@@ -247,7 +253,7 @@ button:focus-visible {
 
 .c-profile__location,
 .c-profile__status {
-  color: rgba(255, 255, 255, 0.88);
+  color: white;
   font-size: 13px;
 
   @include breakpoint($m) {
@@ -297,7 +303,7 @@ button:focus-visible {
 }
 
 .c-intro__subtitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
   font-size: 16px;
   line-height: 1.55;
   margin: 0;
@@ -338,7 +344,7 @@ button:focus-visible {
     align-self: auto;
   }
   &:hover {
-    color: rgba(255, 255, 255, 0.8);
+    text-decoration-thickness: 2px;
   }
 
   &__tooltip {
@@ -381,7 +387,7 @@ button:focus-visible {
 }
 
 .c-apps__label {
-  color: rgba(255, 255, 255, 0.85);
+  color: white;
   font-family: $font-mono;
   font-size: 12px;
   font-weight: 500;
@@ -413,7 +419,7 @@ button:focus-visible {
     padding: 18px 4px;
   }
   &:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba($color-navy, 0.15);
   }
 }
 
@@ -446,7 +452,7 @@ button:focus-visible {
 }
 
 .c-apps__desc {
-  color: rgba(255, 255, 255, 0.88);
+  color: white;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -471,7 +477,7 @@ button:focus-visible {
   &--live {
     background-color: white;
     border-color: white;
-    color: #0b6e8c;
+    color: $color-teal-dark;
   }
 }
 
